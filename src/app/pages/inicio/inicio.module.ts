@@ -1,3 +1,4 @@
+import { ComponentesModule } from './../../componentes/componentes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { InicioPage } from './inicio.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    InicioPageRoutingModule
+    InicioPageRoutingModule,
+    ComponentesModule
   ],
   declarations: [InicioPage]
 })
