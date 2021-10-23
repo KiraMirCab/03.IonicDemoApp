@@ -13,7 +13,7 @@ export class AlertPage implements OnInit {
     {
       nombre: "Cuidado",
       numero: 1,
-      color: "medium"
+      color: "verdebetis"
     },
     {
       nombre: "Matrix",

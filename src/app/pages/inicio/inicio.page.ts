@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Componente } from 'src/app/interfaces/componente';
 
 @Component({
   selector: 'app-inicio',
@@ -9,7 +10,28 @@ export class InicioPage implements OnInit {
 
   constructor() { }
 
+  public misComponentes: Componente[]=[
+    {
+      nombre: "Action-sheet",
+      ruta: "/action-sheet",
+      icono: "trash",
+      color: "primary"
+    },
+    {
+      nombre: "Alert",
+      ruta: "/alert",
+      icono: "add",
+      color: "success"
+    },
+    {
+      nombre: "Ususarios",
+      ruta: "/usuarios",
+      icono: "person",
+      color: "danger"
+    }
+  ];
+
   ngOnInit() {
-  }
+  };
 
 }

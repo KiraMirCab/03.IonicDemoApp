@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'alert',
     loadChildren: () => import('./pages/alert/alert.module').then( m => m.AlertPageModule)
+  },  {
+    path: 'usuarios',
+    loadChildren: () => import('./pages/usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   },
+
 ];
 
 @NgModule({

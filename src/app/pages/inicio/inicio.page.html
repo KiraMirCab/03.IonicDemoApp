@@ -1,13 +1,11 @@
 <app-cabecera 
 [titulo]="'Inicio'"
-[color]="'light'"
+[color]="'dark'"
 ></app-cabecera>
 
 <ion-content>
-  <ion-button expand="block" [color]="'primary'" [routerLink] = "'/action-sheet'">
-    Action sheet
-  </ion-button>
-  <ion-button expand="block" [color]="'secondary'" [routerLink] = "'/alert'">
-    Alert
+    <ion-button *ngFor="let c of misComponentes" [routerLink]='c.ruta' expand='full' [color]='c.color'>
+    <ion-icon slot="start" [name]="c.icono"></ion-icon>
+    {{c.nombre}}
   </ion-button>
 </ion-content>
