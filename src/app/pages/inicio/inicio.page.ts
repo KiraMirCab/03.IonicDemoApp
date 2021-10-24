@@ -1,3 +1,4 @@
+import { ComponentesService } from './../../services/componentes.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Componente } from 'src/app/interfaces/componente';
 
@@ -7,31 +8,18 @@ import { Componente } from 'src/app/interfaces/componente';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+  
+  public misComponentes: Componente[]=[];
+  
+  constructor(private _componentesService:ComponentesService) { }
 
-  constructor() { }
-
-  public misComponentes: Componente[]=[
-    {
-      nombre: "Action-sheet",
-      ruta: "/action-sheet",
-      icono: "trash",
-      color: "primary"
-    },
-    {
-      nombre: "Alert",
-      ruta: "/alert",
-      icono: "add",
-      color: "success"
-    },
-    {
-      nombre: "Ususarios",
-      ruta: "/usuarios",
-      icono: "person",
-      color: "danger"
+  async ngOnInit() {
+    try {
+      this.misComponentes = (await this._componentesService.getComponents()).componentes;
+      console.log(this.misComponentes);
+    } catch (error) {
+      console.log("Error recibiendo los datos de la promesa");
     }
-  ];
-
-  ngOnInit() {
   };
 
 }

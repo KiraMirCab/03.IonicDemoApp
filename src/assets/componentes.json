@@ -1,0 +1,21 @@
+{
+    "componentes": [
+    {
+        "nombre": "Action-sheet",
+        "ruta": "/action-sheet",
+        "icono": "trash",
+        "color": "primary"
+    },
+    {
+        "nombre": "Alert",
+        "ruta": "/alert",
+        "icono": "add",
+        "color": "success"
+    },
+    {
+        "nombre": "Ususarios",
+        "ruta": "/usuarios",
+        "icono": "person",
+        "color": "danger"
+    }]
+}
