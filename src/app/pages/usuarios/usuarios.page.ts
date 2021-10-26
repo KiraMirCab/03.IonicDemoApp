@@ -9,8 +9,7 @@ import { MensajesService } from 'src/app/services/mensajes.service';
 })
 export class UsuariosPage implements OnInit {
 
-  @ViewChild('miRefresher') refresher: IonRefresher;
-  @ViewChild('miInfinite') infinite: IonInfiniteScroll;
+
 
   constructor(private _mensajeService:MensajesService) { }
 
@@ -19,30 +18,6 @@ export class UsuariosPage implements OnInit {
 
   onClick() {
     this._mensajeService.muestramensaje('Usuarios cargados', 1500);
-  }
-  
-  public datos = Array(20);
-
-  refresca(){
-    setTimeout(() => {
-      let nuevosDatos = Array(10);
-      this.datos.push(...nuevosDatos);
-      this.refresher.complete();
-    }, 1500)
-  };
-
-  loadData() {
-    setTimeout(() => {
-      if (this.datos.length >= 40) {
-        this.infinite.complete();
-        this.infinite.disabled = true;
-        return;
-      }
-
-      let nuevosDatos = Array(10);
-      this.datos.push(...nuevosDatos);
-      this.infinite.complete();
-    }, 1500)
   }
 
 }

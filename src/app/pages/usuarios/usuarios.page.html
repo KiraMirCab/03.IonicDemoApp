@@ -2,23 +2,6 @@
 
 
 <ion-content>
-  <!-- <ion-refresher #miRefresher slot="fixed" (ionRefresh)="refresca($event)">
-      <ion-refresher-content
-        refreshingSpinner="crescent"
-        refreshingText="cargando...">
-      </ion-refresher-content>
-    </ion-refresher> -->
-
-  <ion-list>
-    <ion-item *ngFor='let item of datos; let i = index;'>
-      <ion-label>Item nº {{i+1}}</ion-label>
-    </ion-item>
-  </ion-list>
-
-  <ion-infinite-scroll #miInfinite threshold="100px" (ionInfinite)="loadData()">
-    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="cargando...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 
   <ion-button (click)="onClick()" expand="block" shape="round">
     Muestra usuarios

@@ -17,5 +17,29 @@
         "ruta": "/usuarios",
         "icono": "person",
         "color": "danger"
+    },
+    {
+        "nombre": "ion refresher",
+        "ruta": "/ion-refresher",
+        "icono": "alarm-outline",
+        "color": "warning"
+    },
+    {
+        "nombre": "infinite scroll",
+        "ruta": "/infinite",
+        "icono": "infinite",
+        "color": "tertiary"
+    },
+    {
+        "nombre": "loading",
+        "ruta": "/loading",
+        "icono": "refresh",
+        "color": "medium"
+    },
+    {
+        "nombre": "tabs",
+        "ruta": "/tabs",
+        "icono": "funnel",
+        "color": "success"
     }]
 }
