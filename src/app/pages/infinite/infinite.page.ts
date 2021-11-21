@@ -1,5 +1,9 @@
+import { DetallePeliculaPage } from './../detalle-pelicula/detalle-pelicula.page';
+import { MensajesService } from 'src/app/services/mensajes.service';
+import { PeliculasService } from './../../services/peliculas.service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonInfiniteScroll, IonRefresher } from '@ionic/angular';
+import { IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { Pelicula } from 'src/app/interfaces/pelicula';
 
 @Component({
   selector: 'app-infinite',
@@ -8,35 +12,51 @@ import { IonInfiniteScroll, IonRefresher } from '@ionic/angular';
 })
 export class InfinitePage implements OnInit {
 
-  @ViewChild('miRefresher') refresher: IonRefresher;
+  
+  constructor(private _peliculaService:PeliculasService,
+              private _mensajeService:MensajesService,
+              private _modalController: ModalController) { }
   @ViewChild('miInfinite') infinite: IonInfiniteScroll;
-
-  constructor() { }
+    
+  public datos:Pelicula[] = [];
+  public numPage:number = 1;
+  public filtrarPor:string = '';
 
   ngOnInit() {
+    this.loadData(null);
   }
 
-  public datos = Array(20);
+  filtrar(ev:any) {
+    this.filtrarPor = ev.detail.value;
+  }
 
-  refresca(){
-    setTimeout(() => {
-      let nuevosDatos = Array(10);
-      this.datos.push(...nuevosDatos);
-      this.refresher.complete();
-    }, 1500)
-  };
+  async muestraInfoPeicula(peli:Pelicula) {
+        const modal = await this._modalController.create({
+        component: DetallePeliculaPage,
+        componentProps: {
+          'titulo': peli.title,
+          'pelicula': peli,
+        }
+      });
+      return await modal.present();
+    }
+  
 
-  loadData() {
-    setTimeout(() => {
-      if (this.datos.length >= 40) {
-        this.infinite.complete();
-        this.infinite.disabled = true;
-        return;
-      }
-
-      let nuevosDatos = Array(10);
-      this.datos.push(...nuevosDatos);
+  async loadData(ev:any) {
+    await this._mensajeService.presentLoading('cargando');
+    try {
+      const datosNuevos = await this._peliculaService.getPeliculasPorGenero('28',this.numPage);
+      this.datos.push(...datosNuevos);
+      this.numPage++;
+    } 
+    catch {
+      await this._mensajeService.muestramensaje('error recogiendo datos');
+    }
+    finally {
+      await this._mensajeService.stopLoading();
+    }
+    if(ev){
       this.infinite.complete();
-    }, 1500)
+    }
   }
 }

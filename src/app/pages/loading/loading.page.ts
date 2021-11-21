@@ -14,6 +14,6 @@ export class LoadingPage implements OnInit {
   }
 
   onClick() {
-    this._mensajeService.presentLoading(2000);
+    this._mensajeService.presentLoading('Cargando', 2000);
   }
 }

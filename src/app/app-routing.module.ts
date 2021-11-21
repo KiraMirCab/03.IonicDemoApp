@@ -26,7 +26,8 @@ const routes: Routes = [
   {
     path: 'infinite',
     loadChildren: () => import('./pages/infinite/infinite.module').then( m => m.InfinitePageModule)
-  },  {
+  },
+  {
     path: 'loading',
     loadChildren: () => import('./pages/loading/loading.module').then( m => m.LoadingPageModule)
   },
@@ -34,6 +35,10 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'ion-refresher',
+    loadChildren: () => import('./pages/ion-refresher/ion-refresher.module').then( m => m.IonRefresherPageModule)
+  }
 
 
 

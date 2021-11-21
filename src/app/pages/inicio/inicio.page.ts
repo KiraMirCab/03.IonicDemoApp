@@ -19,7 +19,7 @@ export class InicioPage implements OnInit {
 
   async ngOnInit() {
     
-    await this._mensajeService.presentLoading();    
+    await this._mensajeService.presentLoading('Cargando...');    
     try {
       this.misComponentes = (await this._componentesService.getComponents()).componentes;
       console.log(this.misComponentes);

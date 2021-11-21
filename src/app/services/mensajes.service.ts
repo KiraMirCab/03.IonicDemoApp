@@ -19,10 +19,10 @@ export class MensajesService {
     toast.present();
   }
 
-  async presentLoading(t?: number) {
+  async presentLoading(mensaje: string, t?: number) {
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Un momentito por favor...',
+      message: mensaje,
       duration: t
     });
     await this.loading.present();

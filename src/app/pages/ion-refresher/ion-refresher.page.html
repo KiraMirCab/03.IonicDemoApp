@@ -1,0 +1,14 @@
+<app-cabecera [titulo]="'Ion-Refresher'" [color]="'warning'"></app-cabecera>
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresca()">
+    <ion-refresher-content>
+      <ion-list>
+        <ion-item *ngFor='let item of datos; let i = index;'>
+          <ion-label>Item nº {{i+1}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-refresher-content>
+  </ion-refresher>
+</ion-content>
