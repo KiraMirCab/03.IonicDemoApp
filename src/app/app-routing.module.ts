@@ -38,7 +38,19 @@ const routes: Routes = [
   {
     path: 'ion-refresher',
     loadChildren: () => import('./pages/ion-refresher/ion-refresher.module').then( m => m.IonRefresherPageModule)
+  },  {
+    path: 'ficha-pelicula',
+    loadChildren: () => import('./pages/ficha-pelicula/ficha-pelicula.module').then( m => m.FichaPeliculaPageModule)
+  },
+  {
+    path: 'descripcion',
+    loadChildren: () => import('./pages/descripcion/descripcion.module').then( m => m.DescripcionPageModule)
+  },
+  {
+    path: 'reparto',
+    loadChildren: () => import('./pages/reparto/reparto.module').then( m => m.RepartoPageModule)
   }
+
 
 
 

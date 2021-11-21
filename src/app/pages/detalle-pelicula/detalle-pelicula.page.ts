@@ -22,7 +22,12 @@ export class DetallePeliculaPage implements OnInit {
   }
 
   cambiaPuntuacion(event:any) {
-      this.puntuacion = event.detail.value
+      this.puntuacion = event.detail.value;
+  }
+
+  cambiaTitulo(ev:any) {
+    this.titulo = ev.detail.value;
+    this.pelicula.title = ev.detail.value;
   }
 
   guardarCambios(gardar:boolean){
@@ -31,8 +36,16 @@ export class DetallePeliculaPage implements OnInit {
       this._modalController.dismiss();
     }
     else {
+      let pTotal = this.pelicula.vote_average * this.pelicula.vote_count;
+      let veces = this.pelicula.vote_count + 1;
+      let nuevaPMedia = (pTotal + this.puntuacion)/veces;
+      this.pelicula.vote_average = nuevaPMedia;
+      this.pelicula.vote_count = veces;
       console.log('guardando cambios en la pelicula');
-      this._modalController.dismiss();
+      this._modalController.dismiss({
+        titulo:this.titulo,
+        pelicula:this.pelicula
+      });
     }
   }
 }

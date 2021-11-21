@@ -7,11 +7,29 @@
     [debounce]="250"
     (ionChange)='filtrar($event)'
   ></ion-searchbar>
-  <ion-list>
-    <ion-item *ngFor='let item of datos|filtrar:filtrarPor:"title";'
-          (click)="muestraInfoPeicula(item)">
-      <ion-label>{{item.title}}</ion-label>
-    </ion-item>
+  <ion-list #miList>
+    <ion-item-sliding *ngFor='let item of datos|filtrar:filtrarPor:"title";'
+    >
+      <ion-item 
+        (click)="veAPelicula(item)">
+      <ion-label>{{item.title}} ({{item.vote_average}} - nº votos {{item.vote_count}})</ion-label>
+    </ion-item>  
+      <ion-item-options side="end">
+        <ion-item-option color="tertiary" (click)="muestraInfoPeicula(item)" expandable>
+          Puntuar
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </ion-list>
 
   <ion-infinite-scroll #miInfinite threshold="100px" (ionInfinite)="loadData($event)">
